@@ -48,6 +48,7 @@ function App() {
   return (
     <div className="container">
      <Header/>
+     <AddTask />
      {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : "No Task to show"}
     </div>
   );
