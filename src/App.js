@@ -27,6 +27,15 @@ function App() {
         reminder: false,
     }])
 
+
+    //Add Task Task
+
+    const addTask = (task) => {
+      const id =Math.floor(Math.random() * 10000) + 1
+      const newTask = { id, ... task}
+      setTasks([...tasks,newTask])
+    }
+
     //Delete Tasks will need the id to target which one to hide - We use her ethe filter method
 
     const deleteTask = (id) => {
@@ -48,7 +57,7 @@ function App() {
   return (
     <div className="container">
      <Header/>
-     <AddTask />
+     <AddTask onAdd={addTask} />
      {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : "No Task to show"}
     </div>
   );
