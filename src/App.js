@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Tasks from './components/Tasks.jsx';
+import AddTask from './components/AddTask.jsx';
 import {useState} from 'react'
 
 
@@ -26,11 +27,28 @@ function App() {
         reminder: false,
     }])
 
+    //Delete Tasks will need the id to target which one to hide - We use her ethe filter method
+
+    const deleteTask = (id) => {
+      setTasks(tasks.filter((task) => task.id !== id))
+    }
+
+    // Toggle reminder will need the id to target which one to toggle
+
+    const toggleReminder = (id) => {
+      // console.log(id)
+      setTasks(tasks.map((task) => 
+      task.id == id ? {... task, reminder:
+      !task.reminder} : task 
+       )
+      )
+    }
+
 
   return (
     <div className="container">
      <Header/>
-     <Tasks tasks={tasks}/>
+     {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : "No Task to show"}
     </div>
   );
 }
