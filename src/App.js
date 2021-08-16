@@ -1,12 +1,13 @@
 import Header from './components/Header';
 import Tasks from './components/Tasks.jsx';
 import AddTask from './components/AddTask.jsx';
-import {useState} from 'react'
+import {useState} from 'react';
+
 
 
 function App() {
    
-   
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
         id: 1,
@@ -27,23 +28,18 @@ function App() {
         reminder: false,
     }])
 
-
     //Add Task Task
-
     const addTask = (task) => {
-      const id =Math.floor(Math.random() * 10000) + 1
-      const newTask = { id, ... task}
+      const id = Math.floor(Math.random() * 10000) + 1
+      const newTask = { id, ...task}
       setTasks([...tasks,newTask])
     }
-
     //Delete Tasks will need the id to target which one to hide - We use her ethe filter method
-
     const deleteTask = (id) => {
       setTasks(tasks.filter((task) => task.id !== id))
     }
 
     // Toggle reminder will need the id to target which one to toggle
-
     const toggleReminder = (id) => {
       // console.log(id)
       setTasks(tasks.map((task) => 
@@ -56,9 +52,11 @@ function App() {
 
   return (
     <div className="container">
-     <Header/>
-     <AddTask onAdd={addTask} />
-     {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : "No Task to show"}
+     <Header onAdd={() =>setShowAddTask(!showAddTask)} />
+     {showAddTask && <AddTask onAdd={addTask} /
+     >}
+     {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : 
+     "No Task to show"}
     </div>
   );
 }

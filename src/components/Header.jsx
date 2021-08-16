@@ -4,12 +4,7 @@ import Button from './Button';
 
 
 
-
-const Header = ({title}) => {
-
- const onClick = () => {
-        console.log("lol")
-    }
+const Header = ({title, onAdd}) => {
 
     return (
         <div>
@@ -17,7 +12,7 @@ const Header = ({title}) => {
                 {/* <h1 style={style}>{title}</h1> */}
                 {/* <H1>Hello</H1> */}
                 <h1 style={{ color: "blue"}}>{title}</h1>
-                <Button color='green' text='Add' onClick={onClick}/>
+                <Button color='green' text='Add' onClick={onAdd}/>
             </header>
         </div>
     )
