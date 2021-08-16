@@ -4,7 +4,7 @@ import Button from './Button';
 
 
 
-const Header = ({title, onAdd}) => {
+const Header = ({title, onAdd, showAdd}) => {
 
     return (
         <div>
@@ -12,7 +12,7 @@ const Header = ({title, onAdd}) => {
                 {/* <h1 style={style}>{title}</h1> */}
                 {/* <H1>Hello</H1> */}
                 <h1 style={{ color: "blue"}}>{title}</h1>
-                <Button color='green' text='Add' onClick={onAdd}/>
+                <Button color={showAdd ? "red" : "green"} text={showAdd ? "Close": "Add"} onClick={onAdd}/>
             </header>
         </div>
     )
