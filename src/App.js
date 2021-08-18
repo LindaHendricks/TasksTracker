@@ -1,10 +1,7 @@
 import Header from './components/Header';
 import Tasks from './components/Tasks.jsx';
 import AddTask from './components/AddTask.jsx';
-import Test from './components/Test.jsx';
 import { useState, useEffect } from 'react';
-
-
 
 function App() {
    
@@ -35,17 +32,13 @@ function App() {
 
 
   return (
-    <>
      <div className="container">
        <Header onAdd={() =>setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-       {showAddTask && <AddTask onAdd={addTask} /
+       {showAddTask && <AddTask addTask={addTask} /
        >}
        {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : 
        "No Task to show"}
       </div>
-      
-    </>
-    
   );
 }
 
