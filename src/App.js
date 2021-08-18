@@ -1,7 +1,8 @@
 import Header from './components/Header';
 import Tasks from './components/Tasks.jsx';
 import AddTask from './components/AddTask.jsx';
-import {useState} from 'react';
+import Test from './components/Test.jsx';
+import { useState, useEffect } from 'react';
 
 
 
@@ -9,6 +10,7 @@ function App() {
    
   const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([])
+
 
     //Add Task Task
     const addTask = (task) => {
@@ -33,13 +35,17 @@ function App() {
 
 
   return (
-    <div className="container">
-     <Header onAdd={() =>setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-     {showAddTask && <AddTask onAdd={addTask} /
-     >}
-     {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : 
-     "No Task to show"}
-    </div>
+    <>
+     <div className="container">
+       <Header onAdd={() =>setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+       {showAddTask && <AddTask onAdd={addTask} /
+       >}
+       {tasks.length > 0 ? <Tasks onReminder={toggleReminder}tasks={tasks} onDelete={deleteTask}/> : 
+       "No Task to show"}
+      </div>
+      
+    </>
+    
   );
 }
 

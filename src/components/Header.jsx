@@ -1,31 +1,31 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import styled from "styled-components";
-import Button from './Button';
+import Button from "./Button";
 
-
-
-const Header = ({title, onAdd, showAdd}) => {
-
-    return (
-        <div>
-            <header className="header">
-                {/* <h1 style={style}>{title}</h1> */}
-                {/* <H1>Hello</H1> */}
-                <h1 style={{ color: "blue"}}>{title}</h1>
-                <Button color={showAdd ? "red" : "green"} text={showAdd ? "Close": "Add"} onClick={onAdd}/>
-            </header>
-        </div>
-    )
-}
-
+const Header = ({ title, onAdd, showAdd }) => {
+  return (
+    <div>
+      <header className="header">
+        {/* <h1 style={style}>{title}</h1> */}
+        {/* <H1>Hello</H1> */}
+        <h1 style={{ color: "blue" }}>{title}</h1>
+        <Button
+          color={showAdd ? "red" : "green"}
+          text={showAdd ? "Close" : "Add"}
+          onClick={onAdd}
+        />
+      </header>
+    </div>
+  );
+};
 
 Header.defaultProps = {
-    title: "Task Tracker"
-}
+  title: "Task Tracker",
+};
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired,
-}
+  title: PropTypes.string.isRequired,
+};
 
 // const style = {
 //     color: "bue"
@@ -35,4 +35,4 @@ Header.propTypes = {
 // color: blue;
 // `
 
-export default Header
+export default Header;
